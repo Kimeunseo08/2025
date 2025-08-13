@@ -1,83 +1,85 @@
 import streamlit as st
 
-# CSS 스타일 (세련되고 현대적인 느낌, 깔끔하고 모던한 디자인)
+# CSS 스타일 (무채색 위주, 심플하고 세련되게, 제목 글씨 잘림 방지 포함)
 st.markdown("""
 <style>
-/* 전체 배경 */
+/* 전체 배경 및 패딩 */
 body, .block-container {
-    background: linear-gradient(135deg, #e0f7fa, #ffffff);
-    padding: 1rem 2rem 1rem 2rem;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    padding: 1.5rem 3rem 1.5rem 3rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/* 제목 */
+/* 제목 스타일 - 글씨 안 잘리도록 */
 h1 {
-    color: #00796b;
+    color: #222222;
     font-size: 3rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     user-select: none;
-    letter-spacing: 2px;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow-wrap: normal;
 }
 
 /* 경고박스 */
 .warning {
-    background: #ffcdd2;
-    border-left: 6px solid #d32f2f;
+    background: #e0e0e0;
+    border-left: 6px solid #555555;
     border-radius: 8px;
     padding: 1rem 1.5rem;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 600;
-    color: #b71c1c;
-    margin-bottom: 1.5rem;
+    color: #444444;
+    margin-bottom: 1.8rem;
     user-select: none;
 }
 
 /* 카드 컨테이너 */
 .card {
     background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    padding: 25px 30px;
-    margin-bottom: 25px;
-    color: #004d40;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+    padding: 24px 28px;
+    margin-bottom: 28px;
+    color: #333333;
     user-select: none;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.15s ease-in-out;
 }
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 }
 
 /* 카드 제목 */
 .card-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 18px;
-    border-bottom: 2px solid #00796b;
-    padding-bottom: 6px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #888888;
+    padding-bottom: 8px;
     user-select: none;
 }
 
 /* 약 사진 */
 .med-img {
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 121, 107, 0.2);
-    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    margin-bottom: 18px;
     user-select: none;
 }
 
 /* 하이라이트 박스 */
 .highlight {
-    background: #b2dfdb;
+    background: #f0f0f0;
     border-radius: 12px;
     padding: 12px 18px;
     margin: 10px 0;
     font-weight: 600;
-    font-size: 1.1rem;
-    color: #004d40;
+    font-size: 1.05rem;
+    color: #555555;
     user-select: none;
-    box-shadow: inset 0 0 10px #80cbc4;
+    box-shadow: inset 0 0 8px #d0d0d0;
 }
 
 /* 입력창 */
@@ -85,43 +87,45 @@ h1 {
     font-size: 1.3rem !important;
     padding: 14px !important;
     border-radius: 12px !important;
-    border: 1.5px solid #00796b !important;
+    border: 1.5px solid #bbbbbb !important;
     transition: border-color 0.3s ease;
+    color: #222222 !important;
+    background-color: #fafafa !important;
 }
 [data-baseweb="input"] > div > input:focus {
-    border-color: #004d40 !important;
+    border-color: #777777 !important;
     outline: none !important;
 }
 
 /* 버튼 */
 .stButton>button {
-    background: linear-gradient(90deg, #00796b, #004d40);
+    background-color: #555555;
     color: white;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     padding: 14px 0;
     border-radius: 14px;
     width: 100%;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s ease;
     user-select: none;
-    box-shadow: 0 4px 15px rgba(0,121,107,0.4);
+    box-shadow: 0 3px 12px rgba(85,85,85,0.4);
 }
 .stButton>button:hover {
-    background: linear-gradient(90deg, #004d40, #00796b);
+    background-color: #333333;
     cursor: pointer;
 }
 
 /* 경고 문구 텍스트 */
 .stWarning>div {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #b71c1c;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #666666;
     user-select: none;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# 데이터 (심플하고 현대적인 느낌으로 이모지는 최소화)
+# 데이터 (무채색과 잘 어울리게 이모지 없이 심플하게)
 drug_data = {
     "두통": {
         "질병": "긴장성 두통",
